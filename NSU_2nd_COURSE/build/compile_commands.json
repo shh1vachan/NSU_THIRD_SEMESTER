@@ -1,0 +1,20 @@
+[
+{
+  "directory": "/home/shh1vachan/Документы/c++/NSU_2nd_COURSE/build",
+  "command": "/usr/bin/g++   -g -std=gnu++23 -o CMakeFiles/lab0.dir/main.cpp.o -c /home/shh1vachan/Документы/c++/NSU_2nd_COURSE/main.cpp",
+  "file": "/home/shh1vachan/Документы/c++/NSU_2nd_COURSE/main.cpp",
+  "output": "CMakeFiles/lab0.dir/main.cpp.o"
+},
+{
+  "directory": "/home/shh1vachan/Документы/c++/NSU_2nd_COURSE/build",
+  "command": "/usr/bin/g++   -g -std=gnu++23 -o CMakeFiles/lab0.dir/csv_writer.cpp.o -c /home/shh1vachan/Документы/c++/NSU_2nd_COURSE/csv_writer.cpp",
+  "file": "/home/shh1vachan/Документы/c++/NSU_2nd_COURSE/csv_writer.cpp",
+  "output": "CMakeFiles/lab0.dir/csv_writer.cpp.o"
+},
+{
+  "directory": "/home/shh1vachan/Документы/c++/NSU_2nd_COURSE/build",
+  "command": "/usr/bin/g++   -g -std=gnu++23 -o CMakeFiles/lab0.dir/words_statistics.cpp.o -c /home/shh1vachan/Документы/c++/NSU_2nd_COURSE/words_statistics.cpp",
+  "file": "/home/shh1vachan/Документы/c++/NSU_2nd_COURSE/words_statistics.cpp",
+  "output": "CMakeFiles/lab0.dir/words_statistics.cpp.o"
+}
+]

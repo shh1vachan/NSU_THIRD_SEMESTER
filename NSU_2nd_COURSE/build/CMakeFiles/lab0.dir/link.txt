@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/lab0.dir/main.cpp.o CMakeFiles/lab0.dir/csv_writer.cpp.o CMakeFiles/lab0.dir/words_statistics.cpp.o -o lab0 

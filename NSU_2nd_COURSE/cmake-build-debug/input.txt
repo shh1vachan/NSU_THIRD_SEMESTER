@@ -1,0 +1,42 @@
+#include "file_processing.h"
+#include <fstream>
+#include <sstream>
+
+
+file_processing::file_processing(const std::string& filename) : filename_(filename){}
+
+void file_processing::extract_from_txt() {
+    std::ifstream file(filename_);
+    if (!file.is_open()) {
+        std::cerr << "cannot open TXT file: " << filename_ << std::endl;
+        return;
+    }
+
+    std::string word;
+    while (file >> word) 
+    {
+        word.erase(std::remove_if(word.begin(), word.end(), ::ispunct), word.end());
+        std::transform(word.begin(), word.end(), word.begin(), ::tolower);
+        words_map[word]++;
+        words_counter++;
+    }
+    file.close();
+
+    //transform data into vector and count frequency as a percentage
+    for (const auto& pair : words_map) 
+    {
+        float frequency_percent = (static_cast<float>(pair.second) / words_counter) * 100;
+        data_.emplace_back(pair.first, pair.second, frequency_percent);
+    }
+
+    //sort tuples in descending frequency as a percentage
+    std::sort(data_.begin(), data_.end(), [](const auto& a, const auto& b) {
+        return std::get<2>(a) > std::get<2>(b); 
+    });
+}
+
+const std::vector<std::tuple<std::string, int, float>>& file_processing::get_data() const
+{
+    return data_;
+}
+
