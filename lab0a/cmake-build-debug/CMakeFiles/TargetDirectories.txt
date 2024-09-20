@@ -1,0 +1,3 @@
+/home/shh1vachan/Документы/c++/lab0a/cmake-build-debug/CMakeFiles/lab0a.dir
+/home/shh1vachan/Документы/c++/lab0a/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/shh1vachan/Документы/c++/lab0a/cmake-build-debug/CMakeFiles/rebuild_cache.dir
