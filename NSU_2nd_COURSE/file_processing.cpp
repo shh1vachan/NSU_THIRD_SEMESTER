@@ -21,7 +21,7 @@ void file_processing::extract_from_txt()
         std::istringstream iss(line);
         std::string word;
 
-        //split the string by delimeter chars
+        // Split the string by delimiter chars
         while (iss >> word) 
         {
             std::string clean_word;
@@ -37,6 +37,9 @@ void file_processing::extract_from_txt()
                     words_counter++;
                     clean_word.clear(); 
                 }
+            }
+
+            // This block should be outside of the for-loop to handle the last word
             if (!clean_word.empty()) {
                 words_map[clean_word]++;
                 words_counter++;
@@ -45,14 +48,14 @@ void file_processing::extract_from_txt()
     }
     file.close();
 
-    //convert data into a vector and calculate frequency as a percentage
+    // Convert data into a vector and calculate frequency as a percentage
     for (const auto& pair : words_map) 
     {
         float frequency_percent = (static_cast<float>(pair.second) / words_counter) * 100;
         data_.emplace_back(pair.first, pair.second, frequency_percent);
     }
 
-    //sort data in descending order of frequencies as a percentage 
+    // Sort data in descending order of frequencies as a percentage 
     std::sort(data_.begin(), data_.end(), [](const auto& a, const auto& b) 
     {
         return std::get<2>(a) > std::get<2>(b); // Сортируем по процентной частоте
