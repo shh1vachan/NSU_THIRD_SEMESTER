@@ -14,7 +14,6 @@ private:
     int words_counter = 0;
 
 public:    
-    
     file_processing(const std::string& filename);
 
     void extract_from_txt();
