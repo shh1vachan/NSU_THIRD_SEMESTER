@@ -5,10 +5,10 @@ BitArray::BitArray() : num_bits(0) {}
 
 BitArray::~BitArray() {}
 
-BitArray::BitArray(int num_bits, unsigned long value) : num_bits(num_bits)
+BitArray::BitArray(int num_bits, unsigned long value) : num_bits(num_bits), 
+    data((num_bits + 63) / 64, 0) 
 {
-    data.resize((num_bits + 64 - 1) / 64, 0);
-    if (num_bits > 0 && !data.empty())
+    if (num_bits > 0) 
         data[0] = value;
 }
 
@@ -33,7 +33,7 @@ BitArray& BitArray::operator=(const BitArray& b) {
 void BitArray::resize(int new_size, bool value)
 {
     if (new_size < 0)
-        throw std::invalid_argument("New size must be non-negative");
+        throw std::invalid_argument("Size mmust be >=0");
 
     std::vector<unsigned long> new_data((new_size + 64 - 1) / 64, value ? ~0UL : 0);
     int copy_bits = std::min(num_bits, new_size);
