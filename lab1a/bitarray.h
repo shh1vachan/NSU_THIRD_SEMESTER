@@ -7,13 +7,14 @@
 #include <algorithm>
 #include <string>
 
-class BitArray {
+
+class BitArray 
+{
 private:
-    int num_bits;  // Total number of bits in the array
+    int num_bits;  
     std::vector<unsigned long> data;  // Storage for the bits
 
 public:
-    // Constructors and destructor
     BitArray();
     ~BitArray();
     explicit BitArray(int num_bits, unsigned long value = 0);
@@ -60,10 +61,11 @@ public:
     friend BitArray operator^(const BitArray& b1, const BitArray& b2);
 
     // Iterator class for range-based for loops
-    class Iterator {
+    class Iterator 
+{
     private:
-        const BitArray* bit_array;  // Pointer to the BitArray
-        int index;  // Current index in the BitArray
+        const BitArray* bit_array;  
+        int index; 
 
     public:
         Iterator(const BitArray* ba, int idx);
@@ -84,4 +86,4 @@ BitArray operator&(const BitArray& b1, const BitArray& b2);
 BitArray operator|(const BitArray& b1, const BitArray& b2);
 BitArray operator^(const BitArray& b1, const BitArray& b2);
 
-#endif // BITARRAY_H
+#endif 
