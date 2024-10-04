@@ -1,15 +1,13 @@
 #include "bitarray.h"
 
 
-static constexpr int BITS_PER_LONG = sizeof(unsigned long) * 8;
-
 BitArray::BitArray() : num_bits(0) {}
 
 BitArray::~BitArray() {}
 
 BitArray::BitArray(int num_bits, unsigned long value) : num_bits(num_bits)
 {
-    data.resize((num_bits + BITS_PER_LONG - 1) / BITS_PER_LONG, 0);
+    data.resize((num_bits + 64 - 1) / 64, 0);
     if (num_bits > 0 && !data.empty())
         data[0] = value;
 }
@@ -37,11 +35,11 @@ void BitArray::resize(int new_size, bool value)
     if (new_size < 0)
         throw std::invalid_argument("New size must be non-negative");
 
-    std::vector<unsigned long> new_data((new_size + BITS_PER_LONG - 1) / BITS_PER_LONG, value ? ~0UL : 0);
+    std::vector<unsigned long> new_data((new_size + 64 - 1) / 64, value ? ~0UL : 0);
     int copy_bits = std::min(num_bits, new_size);
     for (int i = 0; i < copy_bits; ++i)
         if ((*this)[i])
-            new_data[i / BITS_PER_LONG] |= (1UL << (i % BITS_PER_LONG));
+            new_data[i / 64] |= (1UL << (i % 64));
 
     data = std::move(new_data);
     num_bits = new_size;
