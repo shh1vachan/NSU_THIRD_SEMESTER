@@ -5,8 +5,7 @@ BitArray::BitArray() : num_bits(0) {}
 
 BitArray::~BitArray() {}
 
-BitArray::BitArray(int num_bits, unsigned long value) : num_bits(num_bits), 
-    data((num_bits + 63) / 64, 0) 
+BitArray::BitArray(int num_bits, unsigned long value) : num_bits(num_bits), data((num_bits + 63) / 64, 0) 
 {
     if (num_bits > 0) 
         data[0] = value;
@@ -15,13 +14,15 @@ BitArray::BitArray(int num_bits, unsigned long value) : num_bits(num_bits),
 // Copy constructor
 BitArray::BitArray(const BitArray& b) : num_bits(b.num_bits), data(b.data) {}
 
-void BitArray::swap(BitArray& b) {
+void BitArray::swap(BitArray& b) 
+{
     std::swap(num_bits, b.num_bits);
     std::swap(data, b.data);
 }
 
 
-BitArray& BitArray::operator=(const BitArray& b) {
+BitArray& BitArray::operator=(const BitArray& b) 
+{
     if (this != &b) {
         BitArray temp(b);
         swap(temp);
