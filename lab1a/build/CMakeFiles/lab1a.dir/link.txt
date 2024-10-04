@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/lab1a.dir/main.cpp.o CMakeFiles/lab1a.dir/bitarray.cpp.o -o lab1a 
