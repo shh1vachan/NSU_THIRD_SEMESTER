@@ -54,9 +54,10 @@ void BitArray::clear()
 }
 
 
-void BitArray::push_back(bool bit) 
+void BitArray::push_back(bool bit)
 {
-    resize(num_bits + 1, bit);
+    resize(num_bits + 1);
+    set(num_bits - 1, bit);
 }
 
 
@@ -93,12 +94,14 @@ BitArray& BitArray::operator^=(const BitArray& b)
 }
 
 
-BitArray& BitArray::operator<<=(int n) 
-{
+BitArray& BitArray::operator<<=(int n) {
+    if (n >= num_bits) {
+        std::fill(data.begin(), data.end(), 0);
+        return *this;
+    }
     std::rotate(data.rbegin(), data.rbegin() + n / 64, data.rend());
-    for (int i = 0; i < n % 64; ++i) 
-    {
-        for (size_t j = 0; j < data.size(); ++j) 
+    for (int i = 0; i < n % 64; ++i) {
+        for (size_t j = 0; j < data.size(); ++j)
             data[j] = (data[j] << 1) | (j + 1 < data.size() ? (data[j + 1] >> 63) : 0);
     }
     return *this;
@@ -106,14 +109,18 @@ BitArray& BitArray::operator<<=(int n)
 
 
 BitArray& BitArray::operator>>=(int n) {
+    if (n >= num_bits) {
+        std::fill(data.begin(), data.end(), 0);
+        return *this;
+    }
     std::rotate(data.begin(), data.begin() + n / 64, data.end());
-    for (int i = 0; i < n % 64; ++i) 
-    {
-        for (size_t j = data.size(); j > 0; --j) 
+    for (int i = 0; i < n % 64; ++i) {
+        for (size_t j = data.size(); j > 0; --j)
             data[j - 1] = (data[j - 1] >> 1) | (j > 1 ? (data[j - 2] << 63) : 0);
     }
     return *this;
 }
+
 
 // (const version)
 BitArray BitArray::operator<<(int n) const {
