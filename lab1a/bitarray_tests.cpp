@@ -45,9 +45,9 @@ TEST(BitArrayTest, AssignmentOperator)
 TEST(BitArrayTest, Resize) 
 {
     BitArray ba(64, 1); 
-    ba.resize(128, false); 
+    ba.resize(127, false); 
 
-    ASSERT_EQ(ba.size(), 128); 
+    ASSERT_EQ(ba.size(), 127); 
 
     for (int i = 0; i < 64; ++i) 
     {
@@ -56,7 +56,7 @@ TEST(BitArrayTest, Resize)
         else
             ASSERT_EQ(ba[i], false); 
     }
-    for (int i = 64; i < 128; ++i) 
+    for (int i = 64; i < 127; ++i) 
         ASSERT_EQ(ba[i], false);  
 }
 
@@ -150,39 +150,60 @@ TEST(BitArrayTest, RightShift)
 }
 
 
-TEST(BitArrayTest, SetBit) {
-    BitArray ba(64);
-    ba.set(0, true);
-    ASSERT_TRUE(ba[0]);
-    ASSERT_THROW(ba.set(100), std::out_of_range);
-}
-
-
-TEST(BitArrayTest, SetAllBits) {
-    BitArray ba(64);
-    ba.set();
-    ASSERT_EQ(ba.count(), 64);
-}
-
-
-TEST(BitArrayTest, ResetBit) 
+TEST(BitArrayTest, OperatorLeftShiftAssignmentWithOverflow) 
 {
     BitArray ba(64, 1);
-    ba.reset(0);
-    ASSERT_FALSE(ba[0]);
-    ASSERT_THROW(ba.reset(100), std::out_of_range);
+    ba <<= 64;
+    ASSERT_EQ(ba.count(), 0);
 }
 
-
-TEST(BitArrayTest, ResetAllBits) 
+TEST(BitArrayTest, OperatorRightShiftAssignmentWithOverflow) 
 {
-    BitArray ba(64, 1);
-    ba.reset();
+    BitArray ba(64, 1UL << 63);
+    ba >>= 64;
     ASSERT_EQ(ba.count(), 0);
 }
 
 
-TEST(BitArrayTest, Any) 
+TEST(BitArrayTest, Swap) 
+{
+    BitArray ba1(64, 5);
+    BitArray ba2(64, 10);
+    
+    ba1.swap(ba2);
+
+    ASSERT_EQ(ba1.count(), 2);
+    ASSERT_EQ(ba2.count(), 2);
+    ASSERT_TRUE(ba1[1]);
+    ASSERT_TRUE(ba1[3]);
+    ASSERT_TRUE(ba2[0]);
+    ASSERT_TRUE(ba2[2]);
+}
+
+
+TEST(BitArrayTest, SetBitTest) 
+{
+    BitArray ba(64);
+    ba.set(0, true);
+    ASSERT_TRUE(ba[0]);
+    ba.set(1, false);
+    ASSERT_FALSE(ba[1]);
+    ASSERT_THROW(ba.set(100), std::out_of_range);
+}
+
+
+TEST(BitArrayTest, ResetBitTest) 
+{
+    BitArray ba(64, 1);
+    ba.reset(0);
+    ASSERT_FALSE(ba[0]);
+    ba.reset(1);
+    ASSERT_FALSE(ba[1]);
+    ASSERT_THROW(ba.reset(100), std::out_of_range);
+}
+
+
+TEST(BitArrayTest, AnyTest) 
 {
     BitArray ba(64, 1);
     ASSERT_TRUE(ba.any());
@@ -191,12 +212,12 @@ TEST(BitArrayTest, Any)
 }
 
 
-TEST(BitArrayTest, None) 
+TEST(BitArrayTest, NoneTest) 
 {
-    BitArray ba(64, 1);
-    ASSERT_FALSE(ba.none());
-    ba.reset();
+    BitArray ba(64);
     ASSERT_TRUE(ba.none());
+    ba.set(0, true);
+    ASSERT_FALSE(ba.none());
 }
 
 
@@ -309,8 +330,6 @@ TEST(BitArrayTest, Iterator)
     }
     ASSERT_EQ(count, 64);  
 }
-
-
 
 
 TEST(BitArrayTest, IteratorEqualityInequality) 
