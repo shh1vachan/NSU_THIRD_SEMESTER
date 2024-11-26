@@ -5,7 +5,6 @@
 
 MuteConverter::MuteConverter(int start, int end) : start_time_(start), end_time_(end) {}
 
-
 void MuteConverter::apply(WAVFile &input, WAVFile &output, const std::vector<int> &params)
 {
     int start_sample = start_time_ * input.get_sample_rate();
