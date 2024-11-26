@@ -1,0 +1,4 @@
+/home/shh1vachan/Документы/c++/lab2b/cmake-build-debug/CMakeFiles/lab2b.dir
+/home/shh1vachan/Документы/c++/lab2b/cmake-build-debug/CMakeFiles/GOL_tests.dir
+/home/shh1vachan/Документы/c++/lab2b/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/shh1vachan/Документы/c++/lab2b/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,6 @@
+#Life 1.06
+#N Test Universe
+#R B3/S23
+2 0
+0 1
+1 2

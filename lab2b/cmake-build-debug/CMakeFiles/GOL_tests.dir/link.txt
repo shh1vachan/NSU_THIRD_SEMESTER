@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/GOL_tests.dir/main_functional.cpp.o CMakeFiles/GOL_tests.dir/game.cpp.o CMakeFiles/GOL_tests.dir/cell.cpp.o CMakeFiles/GOL_tests.dir/parser.cpp.o CMakeFiles/GOL_tests.dir/file_manager.cpp.o -o GOL_tests  -lpthread /usr/lib64/libgtest_main.so.1.14.0 /usr/lib64/libgtest.so.1.14.0 
