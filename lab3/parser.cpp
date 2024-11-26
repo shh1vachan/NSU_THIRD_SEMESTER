@@ -7,6 +7,7 @@
 ConfigParser::ConfigParser(const std::string& config_path, const std::vector<WAVFile>& additional_files)
     : config_path_(config_path), additional_files_(additional_files) {}
 
+
 std::vector<std::unique_ptr<Converter>> ConfigParser::parse_config() 
 {
     std::ifstream config_file(config_path_);
