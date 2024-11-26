@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/lab3_tests.dir/tests.cpp.o CMakeFiles/lab3_tests.dir/WAVfile.cpp.o CMakeFiles/lab3_tests.dir/parser.cpp.o CMakeFiles/lab3_tests.dir/converters.cpp.o CMakeFiles/lab3_tests.dir/sound_processor.cpp.o -o lab3_tests  -lpthread /usr/lib64/libgtest_main.so.1.14.0 /usr/lib64/libgtest.so.1.14.0 

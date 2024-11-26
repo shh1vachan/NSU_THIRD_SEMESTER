@@ -1,0 +1,7 @@
+mute 10 20
+
+mix $2 12
+
+mix $3 15
+
+compress 5000
