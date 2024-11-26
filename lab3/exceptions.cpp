@@ -1,6 +1,5 @@
 #include "exceptions.h"
 
-
 SoundProcessorException::SoundProcessorException(const std::string& message)
     : std::runtime_error(message) {}
 
