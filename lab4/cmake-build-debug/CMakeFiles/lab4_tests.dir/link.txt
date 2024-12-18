@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/lab4_tests.dir/tests.cpp.o CMakeFiles/lab4_tests.dir/csv_parser.cpp.o -o lab4_tests  -lpthread /usr/lib64/libgtest_main.so.1.14.0 /usr/lib64/libgtest.so.1.14.0 

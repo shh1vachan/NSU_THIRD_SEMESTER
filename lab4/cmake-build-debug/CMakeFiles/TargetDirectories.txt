@@ -1,0 +1,4 @@
+/home/shh1vachan/Документы/c++/lab4/CMakeFiles/lab4.dir
+/home/shh1vachan/Документы/c++/lab4/CMakeFiles/lab4_tests.dir
+/home/shh1vachan/Документы/c++/lab4/CMakeFiles/edit_cache.dir
+/home/shh1vachan/Документы/c++/lab4/CMakeFiles/rebuild_cache.dir
