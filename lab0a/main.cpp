@@ -7,6 +7,7 @@ using namespace std;
 
 int main(int argc, char** argv)
 {
+    
     /*std::*/cout <<  "Hello world!" << "\n";
 
     /*std::*/cout << Module1::getMyName() << "\n";
