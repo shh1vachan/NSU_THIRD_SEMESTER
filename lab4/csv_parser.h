@@ -12,7 +12,7 @@ template <typename... Args>
 class parser
 {
 public:
-    //parser configuration
+    // parser configuration
     parser(std::ifstream &file, size_t skipped_lines = 0, char separator = ';', char escaping_symbol = '"');
 
     class Iterator
