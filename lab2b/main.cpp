@@ -3,7 +3,6 @@
 #include "game.h"
 #include "file_manager.h"
 
-
 int main(int argc, char* argv[]) 
 {
     //start commands processing
